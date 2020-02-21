@@ -18,7 +18,7 @@ public class RangeData {
         return "RangeData{" +
                 "inicio=" + inicio +
                 ", fim=" + fim +
-                ", period=" + period +
+                ", qtdDias=" + period.getDays() +
                 ", original=" + original +
                 '}';
     }

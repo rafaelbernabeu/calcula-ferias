@@ -62,7 +62,7 @@ public class Main {
                 return o1.period.getDays() - o2.period.getDays() > 0 ? 1 : -1;
             }).sorted(Comparator.comparing(o -> o.inicio))
                 .forEach((item) -> {
-                System.out.println("Feriados Interessantes:" + item);
+                System.out.println("Melhores Datas:" + item);
             });
         }
     }
