@@ -81,9 +81,6 @@ public class Main {
             }
             return dataAtual;
         }
-        if (ehFeriado(dataAtual) && !ehFinalDeSemana(dataAtual)) {
-            return dataAtual;
-        }
         if (!ehFinalDeSemana(dataAtual)) {
             return dataAtual;
         }
@@ -102,9 +99,6 @@ public class Main {
             if (ehFeriado(menosUmDia)) {
                 return menosUmDia;
             }
-            return dataAtual;
-        }
-        if (ehFeriado(dataAtual) && !ehFinalDeSemana(dataAtual)) {
             return dataAtual;
         }
         if (!ehFinalDeSemana(dataAtual)) {
