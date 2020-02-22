@@ -68,23 +68,23 @@ public class Main {
     }
 
     private static LocalDate procuraPraFrente(LocalDate dataAtual) {
-        LocalDate menosUmDia = dataAtual.plusDays(1);
+        LocalDate maisUmDia = dataAtual.plusDays(1);
         if (ehFeriado(dataAtual) && !ehFinalDeSemana(dataAtual) && !ehSexta(dataAtual)) {
             return dataAtual;
         }
         if (ehSexta(dataAtual)) {
-            return procuraPraFrente(menosUmDia);
+            return procuraPraFrente(maisUmDia);
         }
         if (ehDomingo(dataAtual)) {
-            if (ehFeriado(menosUmDia)) {
-                return menosUmDia;
+            if (ehFeriado(maisUmDia)) {
+                return maisUmDia;
             }
             return dataAtual;
         }
         if (!ehFinalDeSemana(dataAtual)) {
             return dataAtual;
         }
-        return procuraPraFrente(menosUmDia);
+        return procuraPraFrente(maisUmDia);
     }
 
     private static LocalDate procuraPraTras(LocalDate dataAtual) {
