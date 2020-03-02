@@ -27,6 +27,47 @@ export class CalculaService {
 
 
 
+  private procuraPraFrente(dataAtual: Date): Date {
+    let maisUmDia: Date = new Date(dataAtual);
+    maisUmDia.setDate(maisUmDia.getDate() + 1);
+    if (this.ehFeriado(dataAtual) && !this.ehFinalDeSemana(dataAtual) && !this.ehSexta(dataAtual)) {
+    return dataAtual;
+    }
+    if (this.ehSexta(dataAtual)) {
+      return this.procuraPraFrente(maisUmDia);
+    }
+    if (this.ehDomingo(dataAtual)) {
+      if (this.ehFeriado(maisUmDia)) {
+        return maisUmDia;
+      }
+      return dataAtual;
+    }
+    if (!this.ehFinalDeSemana(dataAtual)) {
+      return dataAtual;
+    }
+    return this.procuraPraFrente(maisUmDia);
+  }
+
+  private procuraPraTras(dataAtual: Date): Date {
+    let menosUmDia: Date = new Date(dataAtual);
+    menosUmDia.setDate(menosUmDia.getDate() - 1);
+    if (this.ehFeriado(dataAtual) && !this.ehFinalDeSemana(dataAtual) && !this.ehSegunda(dataAtual)) {
+      return dataAtual;
+    }
+    if (this.ehSegunda(dataAtual)) {
+      return this.procuraPraTras(menosUmDia);
+    }
+    if (this.ehSabado(dataAtual)) {
+      if (this.ehFeriado(menosUmDia)) {
+        return menosUmDia;
+      }
+      return dataAtual;
+    }
+    if (!this.ehFinalDeSemana(dataAtual)) {
+      return dataAtual;
+    }
+    return this.procuraPraTras(menosUmDia);
+  }
 
   private ehSegunda(date: Date): boolean {
     return date.getDay() === 1;
