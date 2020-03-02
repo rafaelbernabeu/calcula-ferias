@@ -8,16 +8,16 @@ export class CalculaService {
   constructor() {
   }
 
-  private anoNovo: Date = new Date(2020, 1, 1);
-  private carnaval: Date = new Date(2020, 2, 25);
-  private paixaoDeCristo: Date = new Date(2020, 4, 10);
-  private tiradentes: Date = new Date(2020, 4, 21);
-  private diaDoTrabalho: Date = new Date(2020, 5, 1);
-  private independencia: Date = new Date(2020, 9, 7);
-  private nsaSraAparecida: Date = new Date(2020, 10, 12);
-  private finados: Date = new Date(2020, 11, 2);
-  private proclamacaoDaRepublica: Date = new Date(2020, 11, 15);
-  private natal: Date = new Date(2020, 12, 25);
+  private anoNovo: Date = new Date(2020, 0, 1);
+  private carnaval: Date = new Date(2020, 1, 25);
+  private paixaoDeCristo: Date = new Date(2020, 3, 10);
+  private tiradentes: Date = new Date(2020, 3, 21);
+  private diaDoTrabalho: Date = new Date(2020, 4, 1);
+  private independencia: Date = new Date(2020, 8, 7);
+  private nsaSraAparecida: Date = new Date(2020, 9, 12);
+  private finados: Date = new Date(2020, 10, 2);
+  private proclamacaoDaRepublica: Date = new Date(2020, 10, 15);
+  private natal: Date = new Date(2020, 11, 25);
 
   private feriados: Date[] = [this.anoNovo, this.carnaval, this.paixaoDeCristo, this.tiradentes, this.diaDoTrabalho,
     this.independencia, this.nsaSraAparecida, this.finados, this.proclamacaoDaRepublica, this.natal];
@@ -58,7 +58,7 @@ export class CalculaService {
 
         rangeData.period = diffDays;
 
-        if (rangeData.period >= periodo + 3) {
+        if (rangeData.period >= periodo + 4) {
           this.listaFerias.get(periodo).push(rangeData);
         }
         avaliando.setDate(avaliando.getDate() + 1);
@@ -137,7 +137,12 @@ export class CalculaService {
   }
 
   private ehFeriado(date: Date): boolean {
-    return this.feriados.includes(date);
+    this.feriados.forEach(f => {
+      if (f.getTime() == date.getTime()) {
+        return true;
+      }
+    });
+    return false;
   }
 
   /*
