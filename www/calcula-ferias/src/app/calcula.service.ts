@@ -24,14 +24,50 @@ export class CalculaService {
 
   private listaFerias: Map<Number, Object[]> = new Map<Number, Object[]>();
 
+  public calcula() {
 
+    let duracoes = [15, 10, 5];
 
+    let hoje: Date = new Date();
+    let primeiroDiaDoAno: Date = new Date(hoje.getFullYear(), 1, 1);
+    let ultimoDiaDoAno: Date = new Date(hoje.getFullYear(), 11, 31);
+
+    for (let i = 0; i < duracoes.length; i++) {
+      let periodo = duracoes[i];
+      this.listaFerias.set(periodo, []);
+
+      let avaliando: Date = new Date(primeiroDiaDoAno);
+
+      while (avaliando < ultimoDiaDoAno) {
+
+        let praFrente: Date = new Date(avaliando);
+        praFrente.setDate(praFrente.getDate() + (periodo - 1));
+
+        let rangeData: any = {};
+        rangeData.original = periodo;
+
+        rangeData.inicio = this.procuraPraTras(avaliando);
+        rangeData.fim = this.procuraPraFrente(praFrente);
+
+        // rangeData.period = Period.between(rangeData.inicio, rangeData.fim.plusDays(1));
+
+        // if (rangeData.period.getDays() >= periodo + 3) {
+        this.listaFerias.get(periodo).push(rangeData);
+        // }
+        avaliando.setDate(avaliando.getDate() + 1);
+      }
+
+      this.listaFerias.get(periodo).forEach(item => {
+        console.log("Melhores Datas:" + item);
+      });
+    }
+  }
 
   private procuraPraFrente(dataAtual: Date): Date {
     let maisUmDia: Date = new Date(dataAtual);
     maisUmDia.setDate(maisUmDia.getDate() + 1);
     if (this.ehFeriado(dataAtual) && !this.ehFinalDeSemana(dataAtual) && !this.ehSexta(dataAtual)) {
-    return dataAtual;
+      return dataAtual;
     }
     if (this.ehSexta(dataAtual)) {
       return this.procuraPraFrente(maisUmDia);
@@ -93,13 +129,13 @@ export class CalculaService {
     return this.feriados.includes(date);
   }
 
-/*
-  weekday[0] = "Sunday";
-  weekday[1] = "Monday";
-  weekday[2] = "Tuesday";
-  weekday[3] = "Wednesday";
-  weekday[4] = "Thursday";
-  weekday[5] = "Friday";
-  weekday[6] = "Saturday";
-*/
+  /*
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+  */
 }
