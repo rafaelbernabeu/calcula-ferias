@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import * as moment from "moment";
 import {Moment} from "moment";
+import {CalculaService} from "./calcula.service";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,9 @@ export class AppComponent {
   public dataInicial: Moment = moment("2020-07-01");
   public dataFinal: Moment = moment("2020-07-29");
   public selected: {startDate: Moment, endDate: Moment} = {startDate: this.dataInicial, endDate: this.dataFinal};
+
+  constructor(private calculaService: CalculaService) {
+  }
 
   choosedDate($event: any) {
 
