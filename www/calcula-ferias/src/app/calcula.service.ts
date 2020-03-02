@@ -22,7 +22,7 @@ export class CalculaService {
   private feriados: Date[] = [this.anoNovo, this.carnaval, this.paixaoDeCristo, this.tiradentes, this.diaDoTrabalho,
     this.independencia, this.nsaSraAparecida, this.finados, this.proclamacaoDaRepublica, this.natal];
 
-  private listaFerias: Map<Number, Object[]> = new Map<Number, Object[]>();
+  private listaFerias: Map<Number, any[]> = new Map<Number, any[]>();
 
   public calcula() {
 
@@ -49,16 +49,27 @@ export class CalculaService {
         rangeData.inicio = this.procuraPraTras(avaliando);
         rangeData.fim = this.procuraPraFrente(praFrente);
 
-        // rangeData.period = Period.between(rangeData.inicio, rangeData.fim.plusDays(1));
 
-        // if (rangeData.period.getDays() >= periodo + 3) {
-        this.listaFerias.get(periodo).push(rangeData);
-        // }
+        let dataFimMaisUm: any = new Date(rangeData.fim);
+        dataFimMaisUm.setDate(dataFimMaisUm.getDate() + 1);
+
+        const diffTime = Math.abs(dataFimMaisUm - rangeData.inicio);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        rangeData.period = diffDays;
+
+        if (rangeData.period >= periodo + 3) {
+          this.listaFerias.get(periodo).push(rangeData);
+        }
         avaliando.setDate(avaliando.getDate() + 1);
       }
 
       this.listaFerias.get(periodo).forEach(item => {
-        console.log("Melhores Datas:" + item);
+        console.log("Melhores Datas: \n" +
+          "Inicio: " + item.inicio + "\n" +
+          "Fim: " + item.fim + "\n" +
+          "Período Original: " + item.original + "\n" +
+          "Período Otimizado: " + item.period);
       });
     }
   }

@@ -16,6 +16,7 @@ export class AppComponent {
   public selected: {startDate: Moment, endDate: Moment} = {startDate: this.dataInicial, endDate: this.dataFinal};
 
   constructor(private calculaService: CalculaService) {
+    calculaService.calcula();
   }
 
   choosedDate($event: any) {
