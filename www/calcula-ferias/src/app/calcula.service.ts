@@ -58,7 +58,7 @@ export class CalculaService {
 
         rangeData.period = diffDays;
 
-        if (rangeData.period >= periodo + 4) {
+        if (rangeData.period >= periodo + 3) {
           this.listaFerias.get(periodo).push(rangeData);
         }
         avaliando.setDate(avaliando.getDate() + 1);
@@ -137,11 +137,11 @@ export class CalculaService {
   }
 
   private ehFeriado(date: Date): boolean {
-    this.feriados.forEach(f => {
+    for (const f of this.feriados) {
       if (f.getTime() == date.getTime()) {
         return true;
       }
-    });
+    }
     return false;
   }
 
