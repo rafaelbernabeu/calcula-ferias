@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
 import {MomentModule} from "ngx-moment";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import {MomentModule} from "ngx-moment";
   imports: [
     BrowserModule,
     MomentModule,
-    NgxDaterangepickerMd.forRoot()
+    NgxDaterangepickerMd.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
