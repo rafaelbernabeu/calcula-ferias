@@ -332,6 +332,18 @@
   <!-- Resources -->
   <h2>Calcula Férias</h2>
 
+  <div *ngFor="let p of periodos; index as i;">
+    <input type="number" min="1" max="30" [value]="periodos[i]">
+  </div>
+
+  {{periodos[0]}}
+  {{periodos[1]}}
+  {{periodos[2]}}
+
+  <br/>
+  <br/>
+  <br/>
+
   <ngx-daterangepicker-material autoApply="true" [startDate]="dataInicial" [endDate]="dataFinal" (choosedDate)="choosedDate($event)"></ngx-daterangepicker-material>
 
 
