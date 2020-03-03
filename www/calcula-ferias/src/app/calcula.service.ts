@@ -24,16 +24,15 @@ export class CalculaService {
 
   private listaFerias: Map<Number, any[]> = new Map<Number, any[]>();
 
-  public calcula() {
-
-    let duracoes = [15, 10, 5];
+  public calcula(duracoes: any[]): Map<Number, any[]> {
 
     let hoje: Date = new Date();
-    let primeiroDiaDoAno: Date = new Date(hoje.getFullYear(), 1, 1);
+    let primeiroDiaDoAno: Date = new Date(hoje.getFullYear(), 0,1);
     let ultimoDiaDoAno: Date = new Date(hoje.getFullYear(), 11, 31);
 
     for (let i = 0; i < duracoes.length; i++) {
       let periodo = duracoes[i];
+      if (!periodo) { continue };
       this.listaFerias.set(periodo, []);
 
       let avaliando: Date = new Date(primeiroDiaDoAno);
@@ -46,9 +45,8 @@ export class CalculaService {
         let rangeData: any = {};
         rangeData.original = periodo;
 
-        rangeData.inicio = this.procuraPraTras(avaliando);
-        rangeData.fim = this.procuraPraFrente(praFrente);
-
+        rangeData.inicio = new Date(this.procuraPraTras(avaliando));
+        rangeData.fim = new Date(this.procuraPraFrente(praFrente));
 
         let dataFimMaisUm: any = new Date(rangeData.fim);
         dataFimMaisUm.setDate(dataFimMaisUm.getDate() + 1);
@@ -63,15 +61,8 @@ export class CalculaService {
         }
         avaliando.setDate(avaliando.getDate() + 1);
       }
-
-      this.listaFerias.get(periodo).forEach(item => {
-        console.log("Melhores Datas: \n" +
-          "Inicio: " + item.inicio + "\n" +
-          "Fim: " + item.fim + "\n" +
-          "Período Original: " + item.original + "\n" +
-          "Período Otimizado: " + item.period);
-      });
     }
+    return this.listaFerias;
   }
 
   private procuraPraFrente(dataAtual: Date): Date {
