@@ -341,7 +341,7 @@
       <button (click)="remove()">-</button>
       <button (click)="adiciona()">+</button>
     </span>
-    Ganho:
+    Ganho >=
     <input type="number" min="1" max="6" [value]="ganho" [(ngModel)]="ganho">
     <button (click)="atualiza()" style="margin-left: 15px">Atualizar</button>
   </div>
@@ -352,7 +352,7 @@
 
   <div *ngFor="let p of periodos; index as i;">
     <div *ngFor="let f of listaFerias.get(p)">
-      <ngx-daterangepicker-material autoApply="true" [startDate]="getMoment(f.inicio)" [endDate]="getMoment(f.fim)" (choosedDate)="choosedDate($event)"></ngx-daterangepicker-material>
+      <ngx-daterangepicker-material autoApply="true"  [startDate]="getMoment(f.inicio)" [endDate]="getMoment(f.fim)"></ngx-daterangepicker-material>
       <br/>
       <br/>
       <br/>

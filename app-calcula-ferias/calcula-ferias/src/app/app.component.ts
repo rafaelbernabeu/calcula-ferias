@@ -61,10 +61,4 @@ export class AppComponent {
     return index;
   }
 
-  choosedDate($event: any) {
-
-    console.log($event);
-    this.selected = $event
-
-  }
 }
