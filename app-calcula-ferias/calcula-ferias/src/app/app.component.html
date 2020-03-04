@@ -333,12 +333,17 @@
   <h2>Calcula Férias</h2>
 
   <div>
+    Períodos:
     <span *ngFor="let p of periodos; index as i; trackBy:trackByFn">
       <input type="number" min="1" max="30" [value]="periodos[i]" [(ngModel)]="periodos[i]">
     </span>
-    <button (click)="remove()">-</button>
-    <button (click)="adiciona()">+</button>
-    <button (click)="atualiza()">Atualizar</button>
+    <span style="margin-right: 15px">
+      <button (click)="remove()">-</button>
+      <button (click)="adiciona()">+</button>
+    </span>
+    Ganho:
+    <input type="number" min="1" max="6" [value]="ganho" [(ngModel)]="ganho">
+    <button (click)="atualiza()" style="margin-left: 15px">Atualizar</button>
   </div>
 
   <br/>
@@ -348,6 +353,9 @@
   <div *ngFor="let p of periodos; index as i;">
     <div *ngFor="let f of listaFerias.get(p)">
       <ngx-daterangepicker-material autoApply="true" [startDate]="getMoment(f.inicio)" [endDate]="getMoment(f.fim)" (choosedDate)="choosedDate($event)"></ngx-daterangepicker-material>
+      <br/>
+      <br/>
+      <br/>
     </div>
   </div>
 

@@ -24,7 +24,7 @@ export class CalculaService {
 
   private listaFerias: Map<Number, any[]> = new Map<Number, any[]>();
 
-  public calcula(duracoes: any[]): Map<Number, any[]> {
+  public calcula(duracoes: any[], ganho: number): Map<Number, any[]> {
 
     let hoje: Date = new Date();
     let primeiroDiaDoAno: Date = new Date(hoje.getFullYear(), 0,1);
@@ -56,7 +56,7 @@ export class CalculaService {
 
         rangeData.period = diffDays;
 
-        if (rangeData.period >= periodo + 3) {
+        if (rangeData.period >= (periodo + ganho)) {
           this.listaFerias.get(periodo).push(rangeData);
         }
         avaliando.setDate(avaliando.getDate() + 1);

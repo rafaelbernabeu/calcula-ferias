@@ -12,6 +12,8 @@ export class AppComponent {
   title = 'calcula-ferias';
 
   public periodos: number[] = [30];
+  public ganho: number = 3;
+
 
   public dataInicial: Moment = moment("2020-07-01");
   public dataFinal: Moment = moment("2020-07-29");
@@ -19,11 +21,13 @@ export class AppComponent {
   public listaFerias: Map<Number, any[]>;
 
   constructor(private calculaService: CalculaService) {
-    this.listaFerias = calculaService.calcula(this.periodos);
+    this.listaFerias = calculaService.calcula(this.periodos, this.ganho);
   }
 
   public adiciona() {
-    this.periodos.push(0);
+    if (this.periodos.length < 3) {
+      this.periodos.push(0);
+    }
   }
 
   public remove() {
@@ -33,7 +37,7 @@ export class AppComponent {
   }
 
   public atualiza(): void {
-    this.listaFerias = this.calculaService.calcula(this.periodos);
+    this.listaFerias = this.calculaService.calcula(this.periodos, this.ganho);
     this.periodos.map(p => p > 0 ? p : null).forEach(periodo => {
       let umPeriodo = this.listaFerias.get(periodo);
       if (umPeriodo) {
