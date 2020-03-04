@@ -11,7 +11,7 @@ import {CalculaService} from "./calcula.service";
 export class AppComponent {
   title = 'Aproveite melhor suas férias!';
 
-  public periodos: number[] = [30];
+  public periodos: number[] = [15, 10, 5];
   public ganho: number = 3;
 
   public dataInicial: Moment = moment("2020-07-01");
@@ -31,13 +31,15 @@ export class AppComponent {
     firstDay: 1
   };
 
+  public isCollapsed: boolean[] = [false,false,false];
+
   constructor(private calculaService: CalculaService) {
     this.listaFerias = calculaService.calcula(this.periodos, this.ganho);
   }
 
   public adiciona() {
     if (this.periodos.length < 3) {
-      this.periodos.push(0);
+      this.periodos.push(5);
     }
   }
 
@@ -49,18 +51,7 @@ export class AppComponent {
 
   public atualiza(): void {
     this.listaFerias = this.calculaService.calcula(this.periodos, this.ganho);
-    this.periodos.map(p => p > 0 ? p : null).forEach(periodo => {
-      let umPeriodo = this.listaFerias.get(periodo);
-      if (umPeriodo) {
-        umPeriodo.forEach(item => {
-          console.log("Melhores Datas: \n" +
-            "Inicio: " + item.inicio + "\n" +
-            "Fim: " + item.fim + "\n" +
-            "Período Original: " + item.original + "\n" +
-            "Período Otimizado: " + item.period);
-        });
-      }
-    });
+    this.isCollapsed = [false,false,false];
   }
 
   public getMoment(date: Date): Moment {

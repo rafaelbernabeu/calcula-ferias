@@ -329,6 +329,8 @@
 
   </div>
 
+  <br/>
+  <br/>
   <!-- Resources -->
   <h2>Calcula Férias</h2>
 
@@ -337,27 +339,35 @@
   <div>
     Períodos:
     <span *ngFor="let p of periodos; index as i; trackBy:trackByFn">
-      <input type="number" min="1" max="30" [value]="periodos[i]" [(ngModel)]="periodos[i]">
+      <input style="text-align: center;" type="number" min="1" max="30" [value]="periodos[i]" [(ngModel)]="periodos[i]">
     </span>
     <span style="margin-right: 15px">
-      <button (click)="remove()">-</button>
+      <button (click)="remove()">&nbsp;-&nbsp;</button>
       <button (click)="adiciona()">+</button>
     </span>
     Ganho:
-    <input type="number" min="1" max="6" [value]="ganho" [(ngModel)]="ganho">
-    <button (click)="atualiza()" style="margin-left: 15px">Atualizar</button>
+    <input style="text-align: center;" type="number" min="1" max="6" [value]="ganho" [(ngModel)]="ganho">
+    <button class="btn btn-primary" (click)="atualiza()" style="margin-left: 15px">Atualizar</button>
   </div>
 
   <br/>
   <br/>
-  <br/>
 
   <div *ngFor="let p of periodos; index as i;">
-    <div *ngFor="let f of listaFerias.get(p)">
-      <ngx-daterangepicker-material [locale]="defaultLocale" autoApply="true" [startDate]="getMoment(f.inicio)" [endDate]="getMoment(f.fim)"></ngx-daterangepicker-material>
-      <br/>
-      <br/>
-      <br/>
+    <div *ngIf="listaFerias.get(p).length > 0">
+      <button class="btn" style="text-align: center; width: 100%; margin-bottom: 10px;"
+              (click)="isCollapsed[i] = !isCollapsed[i]">
+        Períodos de {{p}} dias - {{isCollapsed[i] ? "Exibir" : "Ocultar"}}</button>
+      <div id="collapseBasic{{p}}" [collapse]="isCollapsed[i]" [isAnimated]="true">
+        <br/>
+        <br/>
+        <div *ngFor="let f of listaFerias.get(p)">
+          <ngx-daterangepicker-material [locale]="defaultLocale" autoApply="true" [startDate]="getMoment(f.inicio)" [endDate]="getMoment(f.fim)"></ngx-daterangepicker-material>
+          <br/>
+          <br/>
+          <br/>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -366,4 +376,3 @@
   </svg>
 
 </div>
-
