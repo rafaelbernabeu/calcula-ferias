@@ -9,16 +9,27 @@ import {CalculaService} from "./calcula.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'calcula-ferias';
+  title = 'Aproveite melhor suas férias!';
 
   public periodos: number[] = [30];
   public ganho: number = 3;
-
 
   public dataInicial: Moment = moment("2020-07-01");
   public dataFinal: Moment = moment("2020-07-29");
   public selected: {startDate: Moment, endDate: Moment} = {startDate: this.dataInicial, endDate: this.dataFinal};
   public listaFerias: Map<Number, any[]>;
+  public defaultLocale: any = {
+    direction: 'ltr',
+    separator: ' - ',
+    weekLabel: 'W',
+    applyLabel: 'Apply',
+    cancelLabel: 'Cancel',
+    clearLabel: 'Clear',
+    customRangeLabel: 'Custom range',
+    daysOfWeek: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+    monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+    firstDay: 1
+  };
 
   constructor(private calculaService: CalculaService) {
     this.listaFerias = calculaService.calcula(this.periodos, this.ganho);
