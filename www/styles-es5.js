@@ -353,7 +353,7 @@
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /data/projects/calcula-ferias/www/calcula-ferias/src/styles.css */
+    /*! /data/projects/calcula-ferias/app-calcula-ferias/calcula-ferias/src/styles.css */
     "./src/styles.css");
     /***/
   }

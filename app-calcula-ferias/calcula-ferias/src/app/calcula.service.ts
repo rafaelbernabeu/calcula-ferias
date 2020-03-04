@@ -56,7 +56,7 @@ export class CalculaService {
 
         rangeData.period = diffDays;
 
-        if (rangeData.period >= (periodo + ganho)) {
+        if (rangeData.period == (periodo + ganho)) {
           this.listaFerias.get(periodo).push(rangeData);
         }
         avaliando.setDate(avaliando.getDate() + 1);
