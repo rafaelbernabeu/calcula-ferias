@@ -11,7 +11,7 @@ import {CalculaService} from "./calcula.service";
 export class AppComponent {
   title = 'Aproveite melhor suas férias!';
 
-  public periodos: number[] = [15, 10, 5];
+  public periodos: number[] = [15, 5, 10];
   public ganho: number = 3;
 
   public dataInicial: Moment = moment("2020-07-01");
@@ -39,7 +39,7 @@ export class AppComponent {
 
   public adiciona() {
     if (this.periodos.length < 3) {
-      this.periodos.push(5);
+      this.periodos.push(30 - this.periodos.reduce((p, c) => p + c));
     }
   }
 

@@ -296,7 +296,7 @@
     alt="Angular Logo"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
   />
-  <span>Calcula Férias</span>
+  <span>Descubra o melhor período encaixando suas férias com feriados e finais de semana.</span>
     <div class="spacer"></div>
     <a aria-label="Rafael Bernabeu on twitter" target="_blank" rel="noopener" href="https://twitter.com/rafaelbernabeu" title="Twitter">
       <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -330,24 +330,33 @@
   </div>
 
   <br/>
-  <br/>
   <!-- Resources -->
   <h2>Calcula Férias</h2>
 
+  <span>Informe em "Ganho" quantos dias deseja aumentar seu período:</span>
+
   <br/>
 
-  <div>
-    Períodos:
-    <span *ngFor="let p of periodos; index as i; trackBy:trackByFn">
-      <input style="text-align: center;" type="number" min="1" max="30" [value]="periodos[i]" [(ngModel)]="periodos[i]">
-    </span>
-    <span style="margin-right: 15px">
-      <button (click)="remove()">&nbsp;-&nbsp;</button>
-      <button (click)="adiciona()">+</button>
-    </span>
-    Ganho:
-    <input style="text-align: center;" type="number" min="1" max="6" [value]="ganho" [(ngModel)]="ganho">
-    <button class="btn btn-primary" (click)="atualiza()" style="margin-left: 15px">Atualizar</button>
+  <div class="row" style="width: 60%">
+    <div class="col-md-7" style="text-align: center;">
+      Períodos
+      <span *ngFor="let p of periodos; index as i; trackBy:trackByFn">
+        <input style="text-align: center;" type="number" min="1" max="30" [value]="periodos[i]" [(ngModel)]="periodos[i]">
+      </span>
+      <span style="margin-right: 15px">
+        <button (click)="remove()">&nbsp;-&nbsp;</button>
+        <button (click)="adiciona()">+</button>
+      </span>
+    </div>
+    <div class=".d-none .d-sm-block .d-md-none">
+      <br/>
+      <br/>
+    </div>
+    <div class="col-md-5" style="text-align: center;">
+      Ganho
+      <input style="text-align: center;" type="number" min="1" max="6" [value]="ganho" [(ngModel)]="ganho">
+      <button (click)="atualiza()" style="margin-left: 15px">Atualizar</button>
+    </div>
   </div>
 
   <br/>
