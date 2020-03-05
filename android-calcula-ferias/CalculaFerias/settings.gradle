@@ -1,0 +1,2 @@
+rootProject.name='CalculaFerias'
+include ':app'
