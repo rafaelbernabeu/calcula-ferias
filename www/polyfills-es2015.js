@@ -3024,7 +3024,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /data/projects/calcula-ferias/app-calcula-ferias/calcula-ferias/src/polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! /data/projects/calcula-ferias/angular-calcula-ferias/calcula-ferias/src/polyfills.ts */"./src/polyfills.ts");
 
 
 /***/ })
