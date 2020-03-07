@@ -350,7 +350,7 @@
 <!--        <button (click)="adiciona()">+</button>-->
 <!--      </span>-->
     </div>
-    <div class=".d-none .d-sm-block .d-md-none">
+    <div class=".d-sm-none .d-block">
       <br/>
       <br/>
     </div>
@@ -359,10 +359,11 @@
       <input style="text-align: center;" type="number" min="1" max="6" [value]="ganho" [(ngModel)]="ganho">
       <button (click)="atualiza()" style="margin-left: 15px">Atualizar</button>
     </div>
+    <div class=".d-sm-none .d-block">
+      <br/>
+      <br/>
+    </div>
   </div>
-
-  <br/>
-  <br/>
 
   <div *ngFor="let p of periodos; index as i;">
     <div *ngIf="listaFerias.get(p).length > 0">
