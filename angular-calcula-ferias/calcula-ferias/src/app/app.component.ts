@@ -9,7 +9,6 @@ import {CalculaService} from "./calcula.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Aproveite melhor suas férias!';
 
   public periodos: number[] = [15, 5, 10];
   public ganho: number = 3;
