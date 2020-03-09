@@ -319,7 +319,7 @@
   <br/>
 
   <div class="row" style="width: 60%">
-    <div class="col-md-7" style="text-align: center;">
+    <div class="col-md-6" style="text-align: center; padding-left: 0; padding-right: 0;">
       Períodos
       <span *ngFor="let p of periodos; index as i; trackBy:trackByFn">
         <span style="margin-left: 5px;">
@@ -335,7 +335,7 @@
       <br/>
       <br/>
     </div>
-    <div class="col-md-5" style="text-align: center;">
+    <div class="col-md-6" style="text-align: center;">
       Ganho
       <input style="text-align: center; margin-left: 10px;" type="number" min="1" max="6" [value]="ganho" [(ngModel)]="ganho">
       <button (click)="atualiza()" style="margin-left: 15px">Atualizar</button>
