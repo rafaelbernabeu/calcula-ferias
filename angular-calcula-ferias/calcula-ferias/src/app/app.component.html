@@ -318,7 +318,7 @@
 
   <br/>
 
-  <div class="row">
+  <div class="row" style="width: 80%;">
     <div class="col-md-6" style="text-align: center; padding-left: 0; padding-right: 0;">
       <span>
         Períodos
@@ -337,13 +337,24 @@
       <br/>
       <br/>
     </div>
-    <div class="col-md-6" style="text-align: center;">
+    <div class="col-md-3" style="text-align: center;">
       <span>
         Ganho
       </span>
       <span>
-        <input style="text-align: center; margin-left: 10px;" type="number" min="1" max="6" [value]="ganho" [(ngModel)]="ganho">
-        <button (click)="atualiza()" style="margin-left: 15px">Atualizar</button>
+        <input style="text-align: center; margin-left: 10px;" type="number" min="2" max="6" (change)="atualiza()" [value]="ganho" [(ngModel)]="ganho">
+        <!-- <button (click)="atualiza()" style="margin-left: 15px">Atualizar</button> -->
+      </span>
+      <span style="color: #fff">
+         .
+      </span>
+    </div>
+    <div class="col-md-3" style="text-align: center;">
+      <span>
+        Ano
+      </span>
+      <span>
+        <input style="text-align: center; margin-left: 10px;" type="number" min="1582" max="2299" (change)="atualiza()" [value]="ano" [(ngModel)]="ano">
       </span>
       <span style="color: #fff">
          .

@@ -12,9 +12,10 @@ export class AppComponent {
 
   public periodos: number[] = [15, 5, 10];
   public ganho: number = 3;
+  public ano: number = new Date().getFullYear();
 
-  public dataInicial: Moment = moment("2020-07-01");
-  public dataFinal: Moment = moment("2020-07-29");
+  public dataInicial: Moment = this.getMoment(new Date());
+  public dataFinal: Moment = this.getMoment(new Date());
   public selected: {startDate: Moment, endDate: Moment} = {startDate: this.dataInicial, endDate: this.dataFinal};
   public listaFerias: Map<Number, any[]>;
   public defaultLocale: any = {
@@ -33,7 +34,7 @@ export class AppComponent {
   public isCollapsed: boolean[] = [false,false,false];
 
   constructor(private calculaService: CalculaService) {
-    this.listaFerias = calculaService.calcula(this.periodos, this.ganho);
+    this.listaFerias = calculaService.calculaFerias(this.periodos, this.ganho, this.ano);
   }
 
   public adiciona() {
@@ -49,7 +50,7 @@ export class AppComponent {
   }
 
   public atualiza(): void {
-    this.listaFerias = this.calculaService.calcula(this.periodos, this.ganho);
+    this.listaFerias = this.calculaService.calculaFerias(this.periodos, this.ganho, this.ano);
     this.isCollapsed = [false,false,false];
   }
 
