@@ -24,7 +24,7 @@
     "ngx-daterangepicker-material": "^2.2.0",
     "ngx-moment": "^3.5.0",
     "rxjs": "~6.5.4",
-    "tslib": "^1.10.0",
+    "tslib": "^1.14.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
