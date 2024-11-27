@@ -19,7 +19,7 @@
     "@angular/platform-browser": "~9.0.3",
     "@angular/platform-browser-dynamic": "~9.0.3",
     "@angular/router": "~9.0.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ngx-bootstrap": "^5.5.0",
     "ngx-daterangepicker-material": "^2.2.0",
     "ngx-moment": "^3.5.0",
